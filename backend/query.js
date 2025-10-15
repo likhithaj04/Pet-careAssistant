@@ -1,4 +1,3 @@
-// server.js (Backend - Node.js with Express and LangChain v0.2+)
 
 import express from "express";
 import cors from "cors";
@@ -17,14 +16,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// === SETUP OpenAI and Pinecone ===
+//wrap local llm to langchain
 const llm = new ChatOllama({
    model: "tinyllama",
 });
 
+
 const embeddings = new OllamaEmbeddings({
   model: "nomic-embed-text",
-  baseUrl: "http://localhost:11434", // Default Ollama server
+  baseUrl: "http://localhost:11434", 
 });
 
 
@@ -40,7 +40,6 @@ const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
 
 const retriever = vectorStore.asRetriever();
 
-// === Build Chain using LangChain v0.2 approach ===
 const prompt = ChatPromptTemplate.fromMessages([
   {
     role: "system",
@@ -65,7 +64,6 @@ const chain = RunnableSequence.from([
   new StringOutputParser(),
 ]);
 
-// === API Route ===
 app.post("/query", async (req, res) => {
   const { question } = req.body;
   try {
@@ -77,6 +75,5 @@ app.post("/query", async (req, res) => {
   }
 });
 
-// === Start Server ===
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
