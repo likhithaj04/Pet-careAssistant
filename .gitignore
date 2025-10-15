@@ -1,0 +1,22 @@
+# Node dependencies
+frontend/node_modules/
+backend/node_modules/
+
+# Environment variables
+frontend/.env
+backend/.env
+QueryApp.env
+
+# Logs
+*.log
+
+# Build output
+frontend/dist/
+frontend/build/
+
+# Optional: OS/editor files
+.DS_Store
+.vscode/
+
+
+node_modules

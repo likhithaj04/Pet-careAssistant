@@ -1,0 +1,21 @@
+{
+  "name": "agent",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/ingest.js"
+  },
+
+  "dependencies": {
+    "@langchain/community": "^0.3.49",
+    "@langchain/core": "^0.3.66",
+    "@langchain/openai": "^0.6.3",
+    "@pinecone-database/pinecone": "^6.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "openai": "^5.11.0",
+    "pdf-parse": "^1.1.1"
+  }
+}
