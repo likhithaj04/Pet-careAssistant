@@ -27,9 +27,14 @@ export default function QueryApp() {
     setLoading(false);
   };
 
+    const handleClear=()=>{
+      setAnswer(""),
+      setQuestion("")
+    }
+
   return (
     <div className="container">
-      <div className="all">
+      <div className="all"> 
         <div className="content">
       <textarea
         className=" texts" style={{width:"630px",padding:"8px"}}
@@ -37,8 +42,9 @@ export default function QueryApp() {
         placeholder="Any queries on your pet?"
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
+        
       />
-      
+    
 
 <div className="btn">
       <button
@@ -48,7 +54,9 @@ export default function QueryApp() {
       >
         {loading ? "Thinking..." : "Submit"}
       </button>
+      <button className="btn-query" onClick={handleClear}>Clear</button>
 </div>
+  
 </div>
       {answer && (
         <div className="mt-6 w-full max-w-xl bg-white p-4 rounded shadow">
