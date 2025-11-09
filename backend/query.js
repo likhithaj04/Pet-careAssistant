@@ -75,7 +75,7 @@ app.post("/query", async (req, res) => {
   }
 });
 app.get("/", (req, res) => {
-  res.send("🚀 Backend running — use POST /query");
+  res.send(" Backend running — use POST /query");
 });
 
 
