@@ -15,7 +15,7 @@ COPY backend ./backend
 COPY --from=build /app/frontend/dist ./backend/public
 
 WORKDIR /app/backend
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 EXPOSE 5000
 CMD ["node", "query.js"]
