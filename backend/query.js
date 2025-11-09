@@ -74,6 +74,10 @@ app.post("/query", async (req, res) => {
     res.status(500).json({ error: "Something went wrong" });
   }
 });
+app.get("/", (req, res) => {
+  res.send("🚀 Backend running — use POST /query");
+});
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
