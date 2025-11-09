@@ -1,12 +1,15 @@
 
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import { ChatOllama } from "@langchain/community/chat_models/ollama";
+import { OllamaEmbeddings } from "@langchain/community/embeddings/ollama";
+import { RunnableSequence } from "@langchain/core/runnables";
+import { StringOutputParser } from "@langchain/core/output_parsers";
+import { Pinecone } from "@pinecone-database/pinecone";
+import { PineconeStore } from "@langchain/community/vectorstores/pinecone";
+import { ChatPromptTemplate } from "@langchain/core/prompts";
 
-const { ChatOllama } = require("@langchain/community/chat_models/ollama");
-const { OllamaEmbeddings } = require("@langchain/community/embeddings/ollama");
-const { RunnableSequence } = require("@langchain/core/runnables");
-const { StringOutputParser } = require("@langchain/core/output_parsers");
-const { Pinecone } = require("@pinecone-database/pinecone");
-const { PineconeStore } = require("@langchain/community/vectorstores/pinecone");
-const { ChatPromptTemplate } = require("@langchain/core/prompts");
 dotenv.config();
 
 const app = express();
