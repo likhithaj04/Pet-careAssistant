@@ -2,12 +2,12 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { ChatOllama } from "@langchain/community/chat_models/ollama";
-import { OllamaEmbeddings } from "@langchain/community/embeddings/ollama";
+import { ChatOllama } from "@langchain/ollama";
+import { OllamaEmbeddings } from "@langchain/ollama";
 import { RunnableSequence } from "@langchain/core/runnables";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { Pinecone } from "@pinecone-database/pinecone";
-import { PineconeStore } from "@langchain/community/vectorstores/pinecone";
+import { PineconeStore } from "@langchain/pinecone";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 
 dotenv.config();
