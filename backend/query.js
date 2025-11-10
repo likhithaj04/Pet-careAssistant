@@ -55,7 +55,7 @@ const chain = RunnableSequence.from([
   {
     question: (input) => input.question,
     context: async (input) => {
-      const docs = await retriever.getRelevantDocuments(input.question);
+      const docs = await retriever.invoke(input.question);
       return docs.map((doc) => doc.pageContent).join("\n\n");
     },
   },
@@ -74,9 +74,9 @@ app.post("/query", async (req, res) => {
     res.status(500).json({ error: "Something went wrong" });
   }
 });
-app.get("/", (req, res) => {
-  res.send(" Backend running — use POST /query");
-});
+// app.get("/", (req, res) => {
+//   res.send(" Backend running — use POST /query");
+// });
 
 
 const PORT = process.env.PORT || 5000;
