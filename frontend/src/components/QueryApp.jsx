@@ -11,21 +11,21 @@ export default function QueryApp() {
     if (!question.trim()) return;
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/query", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ question }),
-      });
-      const data = await res.json();
-      setAnswer(data.answer);
-    } catch (error) {
-      setAnswer("Error fetching answer. Please try again.");
-      console.error(error);
-    }
-    setLoading(false);
-  };
+    const res = await fetch("/query", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ question }),
+    });
+    const data = await res.json();
+    setAnswer(data.answer);
+  } catch (error) {
+    setAnswer("Error fetching answer. Please try again.");
+    console.error(error);
+  }
+  setLoading(false);
+};
 
     const handleClear=()=>{
       setAnswer(""),
