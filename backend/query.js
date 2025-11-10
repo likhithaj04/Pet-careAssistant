@@ -9,10 +9,29 @@ import { StringOutputParser } from "@langchain/core/output_parsers";
 import { Pinecone } from "@pinecone-database/pinecone";
 import { PineconeStore } from "@langchain/pinecone";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const app = express();
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use((req, res, next) => {
+  if (req.method === "GET" && !req.path.startsWith("/api")) {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+  } else {
+    next();
+  }
+});
+
+
 
 dotenv.config();
 
-const app = express();
 app.use(cors());
 app.use(express.json());
 
